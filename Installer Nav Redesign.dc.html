@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet">
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #f6f7f9; font-family: "Plus Jakarta Sans", sans-serif; color: #1b1763; -webkit-font-smoothing: antialiased; }
+  a { color: #2e46b9; text-decoration: none; }
+  a:hover { color: #2e46b9; text-decoration: underline; }
+</style>
+</helmet>
+<div style="background:#ffffff;font-family:'Plus Jakarta Sans',sans-serif;color:#1b1763;min-width:1180px">
+
+  <header style="position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;height:93px;padding:0 40px;background:#ffffff;z-index:30">
+    <a href="#" style="display:flex;align-items:center;text-decoration:none">
+      <img src="assets/logo-energysage.svg" alt="energysage" style="height:38px;width:auto;display:block">
+    </a>
+
+    <nav style="display:flex;align-items:center;justify-content:center;gap:44px">
+      <a href="#" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Leads
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#ffc28b;color:#1b1763;font-size:13px;font-weight:700;line-height:1">15</span>
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Messages
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#ffc28b;color:#1b1763;font-size:13px;font-weight:700;line-height:1">1</span>
+      </a>
+      <a href="#" style="font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Insights</a>
+
+      <div style="position:relative">
+        <button type="button" onClick="{{ toggleQuote }}" style="display:flex;align-items:center;gap:8px;padding:0;border:0;background:transparent;font-family:inherit;font-size:17px;font-weight:600;color:#1b1763;cursor:pointer">Quote setup<i class="ph ph-caret-down" aria-hidden="true" style="font-size: 16px; line-height: 1; transition: transform 150ms ease-out; transform: rotate(180deg);"></i>
+        </button>
+        <sc-if value="{{ quoteOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:calc(100% + 22px);left:50%;transform:translateX(-50%);min-width:252px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
+            <a href="Quote%20Settings.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Quote packages</a>
+            <a href="Autoquote.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Autoquote packages</a>
+            <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Territories</a>
+          </div>
+        </sc-if>
+      </div>
+    </nav>
+
+    <div style="position:relative;justify-self:end">
+      <button type="button" onClick="{{ toggleAccount }}" style="display:flex;align-items:center;gap:10px;padding:0;border:0;background:transparent;font-family:inherit;font-size:17px;font-weight:600;color:#1b1763;cursor:pointer">Bartholomew
+        <i class="ph ph-user" aria-hidden="true" style="font-size:28px;line-height:1"></i>
+      </button>
+      <sc-if value="{{ accountOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;top:calc(100% + 22px);right:0;min-width:276px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
+          <a href="Profile.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Profile</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Marketplace roles</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Invoices and rebates</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Resource center</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Sign out</a>
+        </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <main style="padding:0 40px 8px">
+    <h1 style="margin:0 0 22px;font-size:30px;font-weight:700;color:#000000;letter-spacing:-.01em">Leads</h1>
+
+    <div style="display:flex;align-items:center;gap:18px;margin-bottom:16px">
+      <label style="display:flex;align-items:center;gap:12px;width:360px;height:54px;padding:0 18px;border:1px solid #b9bcc9;border-radius:8px;background:#ffffff">
+        <i class="ph ph-magnifying-glass" aria-hidden="true" style="font-size:22px;line-height:1;color:#1b1763"></i>
+        <input type="text" placeholder="Search leads" style="flex:1;min-width:0;border:0;outline:none;background:transparent;font-family:inherit;font-size:17px;color:#1b1763">
+      </label>
+
+      <button type="button" style="display:flex;align-items:center;justify-content:space-between;gap:24px;width:350px;height:54px;padding:0 20px;border:1px solid #b9bcc9;border-radius:8px;background:#ffffff;font-family:inherit;font-size:17px;font-weight:500;color:#1b1763;cursor:pointer">Sort by last active
+        <i class="ph ph-caret-down" aria-hidden="true" style="font-size:20px;line-height:1"></i>
+      </button>
+
+      <button type="button" style="margin-left:auto;padding:17px 30px;border:0;border-radius:8px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:17px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">Export data</button>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+      <button type="button" style="display:flex;align-items:center;gap:9px;padding:9px 20px;border:1px solid #ff9133;border-radius:999px;background:#ffffff;font-family:inherit;font-size:15px;font-weight:600;color:#1b1763;cursor:pointer">
+        <i class="ph ph-plus" aria-hidden="true" style="font-size: 17px; line-height: 1;"></i>
+        Add filters
+      </button>
+      <button type="button" style="padding:9px 22px;border:1px solid #ff9133;border-radius:999px;background:#ffffff;font-family:inherit;font-size:15px;font-weight:600;color:#1b1763;cursor:pointer">All company leads</button>
+    </div>
+
+    <div style="border:1px solid #dfe1eb;border-radius:4px;overflow-x:auto;overflow-y:hidden">
+      <table style="width:100%;border-collapse:collapse;font-size:15px">
+        <thead>
+          <tr style="background:#e4ecfd">
+            <th style="padding:16px 18px;text-align:left;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">Lead</th>
+            <th style="padding:16px 18px;text-align:left;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">Received</th>
+            <th style="padding:16px 18px;text-align:left;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">Status</th>
+            <th style="padding:16px 18px;text-align:left;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">Phone number</th>
+            <th style="padding:16px 18px;text-align:left;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">Electric bill</th>
+            <th style="padding:16px 18px;text-align:left;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">Monthly avg bill</th>
+            <th style="padding:16px 18px;text-align:left;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">External quote</th>
+            <th style="padding:16px 18px;text-align:center;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">Battery</th>
+            <th style="padding:16px 18px;text-align:center;font-weight:600;color:#1b1763;border-right:1px solid #dfe1eb;white-space:nowrap">Returning shopper</th>
+            <th style="padding:16px 18px;text-align:left;font-weight:600;color:#1b1763;white-space:nowrap">Property type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ leads }}" as="row" hint-placeholder-count="10">
+            <tr style="border-top:1px solid #dfe1eb">
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb"><a href="#" style="color:#2e46b9;font-weight:500">{{ row.name }}</a></td>
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb;color:#1b1763;white-space:nowrap">{{ row.received }}</td>
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb"><span style="{{ row.statusStyle }}">{{ row.status }}</span></td>
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb;color:#1b1763;white-space:nowrap">{{ row.phone }}</td>
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb">{{ row.bill }}</td>
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb;color:#1b1763">{{ row.avg }}</td>
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb">{{ row.quote }}</td>
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb;text-align:center">{{ row.battery }}</td>
+              <td style="padding:16px 18px;border-right:1px solid #dfe1eb;text-align:center">{{ row.returning }}</td>
+              <td style="padding:16px 18px;color:#1b1763;white-space:nowrap">{{ row.property }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-top:1px solid #dfe1eb;background:#ffffff">
+        <span style="font-size:15px;color:#1b1763">Showing 10 of 148 leads</span>
+        <div style="display:flex;align-items:center;gap:20px;font-size:15px;color:#1b1763">
+          <span style="color:#878999;cursor:pointer">«</span>
+          <span style="color:#878999;cursor:pointer">‹</span>
+          <span style="font-weight:600">1</span>
+          <span>of 15</span>
+          <span style="cursor:pointer">›</span>
+          <span style="cursor:pointer">»</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="margin-top:36px;padding:44px 40px 56px;background:#dde3f2">
+    <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto">
+      <div>
+        <img src="assets/logo-energysage.svg" alt="energysage" style="height:42px;width:auto;display:block;margin-bottom:22px">
+        <p style="margin:0 0 16px;font-size:16px;font-weight:700;color:#1b1763;max-width:330px">Enter your zip code to see solar quotes near you</p>
+        <div style="display:flex;gap:14px">
+          <input type="text" placeholder="Zip code" style="width:170px;min-width:0;flex:0 1 170px;height:50px;padding:0 16px;border:1px solid #b9bcc9;border-radius:6px;background:#ffffff;font-family:inherit;font-size:16px;color:#1b1763;outline:none">
+          <button type="button" style="flex:0 0 auto;white-space:nowrap;padding:0 28px;height:50px;border:0;border-radius:6px;background:#2e46b9;font-family:inherit;font-size:16px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">Get started</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0 0 4px;font-size:17px;font-weight:700;color:#1b1763">EnergySage</h3>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">How It Works</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">About Us</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Editorial Guidelines</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Press</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Careers</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0 0 4px;font-size:17px;font-weight:700;color:#1b1763">Solar Resources</h3>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Solar Calculator</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Learn About Solar</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Blog</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Solar Rebates</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0 0 4px;font-size:17px;font-weight:700;color:#1b1763">Work With Us</h3>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Solar Companies</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Corporate Partnerships</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Community Programs</a>
+        <a href="#" style="font-size:16px;color:#1b1763;font-weight:500">Market Research</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1760,&quot;height&quot;:1200}}">
+const BADGE = "display:inline-block;padding:5px 14px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap;";
+const STATUS = {
+  "Awaiting Quote": BADGE + "background:#fbe2b8;color:#1b1763;",
+  "Moving forward": BADGE + "background:#c3ecd4;color:#1b1763;",
+  "Quoted- Autoquote": BADGE + "background:#dfe6fb;color:#1b1763;",
+  "Quoted- Manual": BADGE + "background:#dfe6fb;color:#1b1763;",
+};
+
+const ROWS = [
+  ["Lazar A", "Awaiting Quote", "123-456-7890", true, "$100", false, true, true, "Residential"],
+  ["Meghan H", "Awaiting Quote", "", false, "$300", true, true, true, "Residential"],
+  ["Asheeta K", "Moving forward", "", true, "$450", true, false, false, "Commercial"],
+  ["Scott K", "Awaiting Quote", "123-456-7890", false, "$300", true, true, true, "Residential"],
+  ["Eric S", "Quoted- Autoquote", "", false, "$300", true, false, false, "Commercial"],
+  ["Lazar A", "Quoted- Manual", "", true, "$500", false, true, true, "Commercial"],
+  ["Meghan H", "Quoted- Manual", "123-456-7890", true, "$300", false, false, false, "Residential"],
+  ["Asheeta K", "Awaiting Quote", "", true, "$300", true, false, false, "Residential"],
+  ["Scott K", "Awaiting Quote", "123-456-7890", true, "$300", false, true, true, "Residential"],
+  ["Eric S", "Moving forward", "", false, "$250", true, true, false, "Residential"],
+];
+
+class Component extends DCLogic {
+  state = { quoteOpen: false, accountOpen: true };
+
+  componentDidMount() {
+    this._away = (e) => {
+      if (!e.target.closest || !e.target.closest("header")) this.setState({ quoteOpen: false, accountOpen: false });
+    };
+    document.addEventListener("click", this._away);
+  }
+  componentWillUnmount() { document.removeEventListener("click", this._away); }
+
+  link(label) {
+    return React.createElement("a", { href: "#", style: { color: "#2e46b9", fontWeight: 500 } }, label);
+  }
+  check() {
+    return React.createElement("i", { className: "ph-fill ph-check-fat", style: { fontSize: 20, lineHeight: 1, color: "#00a759" } });
+  }
+  propertyCell(kind) {
+    return React.createElement("span", { style: { display: "inline-flex", alignItems: "center", gap: 10, color: "#1b1763" } },
+      React.createElement("i", { className: kind === "Residential" ? "ph ph-house" : "ph ph-buildings", style: { fontSize: 22, lineHeight: 1 } }),
+      kind);
+  }
+
+  renderVals() {
+    const caret = (open) => ({ transition: "transform 150ms ease-out", transform: open ? "rotate(180deg)" : "none" });
+    return {
+      quoteOpen: this.state.quoteOpen,
+      accountOpen: this.state.accountOpen,
+      quoteCaretStyle: `transition:transform 150ms ease-out;transform:${this.state.quoteOpen ? "rotate(180deg)" : "none"}`,
+      toggleQuote: (e) => { e.stopPropagation(); this.setState(s => ({ quoteOpen: !s.quoteOpen, accountOpen: false })); },
+      toggleAccount: (e) => { e.stopPropagation(); this.setState(s => ({ accountOpen: !s.accountOpen, quoteOpen: false })); },
+      leads: ROWS.map(([name, status, phone, bill, avg, quote, battery, returning, property]) => ({
+        name, status, phone, avg,
+        statusStyle: STATUS[status],
+        bill: bill ? this.link("View bill") : "",
+        quote: quote ? this.link("View quote") : "",
+        battery: battery ? this.check() : "",
+        returning: returning ? this.check() : "",
+        received: "Aug. 12, 2025",
+        property: this.propertyCell(property),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

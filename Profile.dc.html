@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet">
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #ffffff; font-family: "Plus Jakarta Sans", sans-serif; color: #1b1763; -webkit-font-smoothing: antialiased; }
+  a { color: #2e46b9; text-decoration: none; }
+  a:hover { color: #2e46b9; text-decoration: underline; }
+</style>
+</helmet>
+<div style="background:#ffffff;font-family:'Plus Jakarta Sans',sans-serif;color:#1b1763;min-width:1180px">
+
+  <header style="position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;height:93px;padding:0 40px;background:#ffffff;z-index:30">
+    <a href="Installer%20Nav%20Redesign.dc.html" style="display:flex;align-items:center;text-decoration:none">
+      <img src="assets/logo-energysage.svg" alt="energysage" style="height:38px;width:auto;display:block">
+    </a>
+
+    <nav style="display:flex;align-items:center;justify-content:center;gap:44px">
+      <a href="Installer%20Nav%20Redesign.dc.html" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Leads
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#ffc28b;color:#1b1763;font-size:13px;font-weight:700;line-height:1">15</span>
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Messages
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#ffc28b;color:#1b1763;font-size:13px;font-weight:700;line-height:1">1</span>
+      </a>
+      <a href="#" style="font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Insights</a>
+
+      <div style="position:relative">
+        <button type="button" onClick="{{ toggleQuote }}" style="display:flex;align-items:center;gap:8px;padding:0;border:0;background:transparent;font-family:inherit;font-size:17px;font-weight:600;color:#1b1763;cursor:pointer">Quote settings
+          <i class="ph ph-caret-down" aria-hidden="true" style="font-size:16px;line-height:1;{{ quoteCaretStyle }}"></i>
+        </button>
+        <sc-if value="{{ quoteOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:calc(100% + 22px);left:50%;transform:translateX(-50%);min-width:252px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
+            <a href="Quote%20Settings.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Quote packages</a>
+            <a href="Autoquote.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Autoquote management</a>
+            <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Territory management</a>
+          </div>
+        </sc-if>
+      </div>
+    </nav>
+
+    <div style="position:relative;justify-self:end">
+      <button type="button" onClick="{{ toggleAccount }}" style="display:flex;align-items:center;gap:10px;padding:0;border:0;background:transparent;font-family:inherit;font-size:17px;font-weight:600;color:#1b1763;cursor:pointer">Bartholomew
+        <i class="ph ph-user" aria-hidden="true" style="font-size:28px;line-height:1"></i>
+      </button>
+      <sc-if value="{{ accountOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:calc(100% + 22px);right:0;min-width:276px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:600;color:#2e46b9;text-decoration:none;white-space:nowrap;background:#f1f3fb" style-hover="text-decoration:none">Profile</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Marketplace roles</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Invoices and rebates</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Resource center</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Sign out</a>
+        </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <main style="max-width:1000px;margin:0 auto;padding:24px 40px 96px">
+    <h1 style="margin:0 0 30px;font-size:36px;font-weight:700;color:#1a1a1a;letter-spacing:-.015em">Profile</h1>
+
+    <div style="display:grid;grid-template-columns:1.35fr 1fr;margin-bottom:48px;border:1px solid #dfe1eb;border-radius:12px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:26px;padding:26px 28px;background:#f4f4fb">
+        <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:112px;height:112px;border-radius:8px;background:#8a8a92">
+          <i class="ph-fill ph-user" aria-hidden="true" style="font-size:64px;line-height:1;color:#dcdce2"></i>
+        </div>
+        <div style="min-width:0">
+          <div style="font-size:22px;font-weight:600;color:#1a1a1a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:8px">{{ screenName }}</div>
+          <div style="font-size:16px;color:#646776;margin-bottom:14px">Sales lead · Boston, MA</div>
+          
+        </div>
+      </div>
+      <div style="padding:26px 28px;background:#f1f3fb">
+        <div style="padding-bottom:10px;border-bottom:1px solid #dfe1eb;font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#2e46b9">Summit Peak Solar</div>
+        <div style="display:flex;align-items:center;gap:12px;margin:14px 0 12px">
+          <span style="display:inline-flex;gap:2px;color:#ff9133;font-size:20px;line-height:1">
+            <i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i>
+          </span>
+          <span style="font-size:16px;color:#646776">(10)</span>
+        </div>
+        <p style="margin:0 0 16px;font-size:16px;line-height:1.5;color:#3d3d47">We work all throughout New England and can give you the best experience from design to switch-on.</p>
+        <a href="#" style="font-size:16px;font-weight:600;color:#2e46b9">Edit your company profile</a>
+      </div>
+    </div>
+
+    <section style="margin-bottom:14px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-bottom:10px;border-bottom:1px solid #dfe1eb">
+        <div style="display:flex;align-items:baseline;gap:20px">
+          <h2 style="margin:0;font-size:26px;font-weight:600;color:#3d3d47;letter-spacing:-.01em">Personal profile</h2>
+          <button type="button" onClick="{{ togglePersonal }}" style="flex:0 0 auto;padding:0;border:0;background:transparent;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2e46b9;cursor:pointer">{{ personalLabel }}</button>
+        </div>
+        <sc-if value="{{ personalRead }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ editPersonal }}" style="flex:0 0 auto;padding:0;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:#2e46b9;cursor:pointer" style-hover="text-decoration:underline">Edit</button>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ personalRead }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:24px 0 34px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding-bottom:16px;border-bottom:1px solid #eceef5">
+            <div style="display:flex;align-items:center;gap:22px">
+              <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:88px;height:88px;border-radius:8px;background:#8a8a92">
+                <i class="ph-fill ph-user" aria-hidden="true" style="font-size:50px;line-height:1;color:#dcdce2"></i>
+              </div>
+              <div>
+                <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Profile image</h3>
+                <div style="font-size:16px;color:#646776">No image yet — 300×300 px works best.</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;padding:16px 0;border-bottom:1px solid #eceef5">
+            <div style="min-width:0">
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Screen name</h3>
+              <div style="font-size:17px;color:#3d3d47;line-height:1.5">{{ screenName }}</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;padding:16px 0;border-bottom:1px solid #eceef5">
+            <div style="min-width:0">
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">About you</h3>
+              <div style="font-size:17px;color:#3d3d47;line-height:1.5">{{ about }}</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;padding:16px 0;border-bottom:1px solid #eceef5">
+            <div style="min-width:0">
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Phone number</h3>
+              <div style="font-size:17px;color:#3d3d47;line-height:1.5">{{ phone }}</div>
+            </div>
+          </div>
+          <div style="padding:16px 0">
+            <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Email</h3>
+            <div style="font-size:17px;color:#3d3d47;line-height:1.5">bartholomew.reed@summitpeaksolar.com</div>
+            <p style="margin:10px 0 0;max-width:640px;font-size:16px;color:#646776;line-height:1.5">To change your email address, contact your EnergySage Marketplace support representative or <a href="mailto:sales@energysage.com" style="font-weight:600;color:#2e46b9">sales@energysage.com</a>.</p>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ personalEdit }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:24px 0 34px">
+          <p style="margin:0 0 26px;font-size:17px;color:#646776">Update any of the fields below, then save to publish your changes.</p>
+          <div style="display:flex;align-items:flex-start;gap:26px;margin-bottom:34px">
+            <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:132px;height:132px;border-radius:8px;background:#8a8a92">
+              <i class="ph-fill ph-user" aria-hidden="true" style="font-size:74px;line-height:1;color:#dcdce2"></i>
+            </div>
+            <div>
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Add your profile image</h3>
+              <div style="max-width:460px;margin-bottom:14px;font-size:16px;color:#646776;line-height:1.5">Maximum file size 10 MB. JPG, PNG, GIF, TIFF or WEBP. Images larger than 300×300 px are scaled for you.</div>
+              <div style="display:flex;align-items:center;gap:18px">
+                <button type="button" style="padding:14px 26px;border:1px solid #2e46b9;border-radius:8px;background:#ffffff;font-family:inherit;font-size:16px;font-weight:700;color:#2e46b9;cursor:pointer" style-hover="background:#eaf0ff">Choose file</button>
+                <span style="font-size:16px;color:#646776">No file chosen</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="max-width:600px">
+            <div style="margin-bottom:26px">
+              <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Screen name</label>
+              <input type="text" value="{{ draftScreenName }}" onChange="{{ onScreenName }}" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
+              <div style="margin-top:8px;font-size:15px;color:#646776">Your screen name appears on the reviews and comments you post.</div>
+            </div>
+            <div style="margin-bottom:26px">
+              <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">About you</label>
+              <textarea value="{{ draftAbout }}" onChange="{{ onAbout }}" style="width:100%;box-sizing:border-box;height:120px;padding:14px 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;line-height:1.5;resize:vertical;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff"></textarea>
+              <div style="margin-top:8px;font-size:15px;color:#646776">For example: what is your profession? What brought you to EnergySage?</div>
+            </div>
+            <div style="margin-bottom:26px">
+              <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Phone number</label>
+              <input type="text" value="{{ draftPhone }}" onChange="{{ onPhone }}" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
+              <div style="margin-top:8px;font-size:15px;color:#646776">Homeowners see this on quotes you send.</div>
+            </div>
+            <div style="margin-bottom:26px">
+              <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Email</label>
+              <input type="text" readonly="readonly" value="bartholomew.reed@summitpeaksolar.com" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f2f2f4;font-family:inherit;font-size:17px;color:#646776;outline:none">
+              <div style="margin-top:8px;font-size:15px;color:#646776">To change your email address, contact your EnergySage Marketplace support representative or <a href="mailto:sales@energysage.com" style="font-weight:600;color:#2e46b9">sales@energysage.com</a>.</div>
+            </div>
+            <div style="display:flex;gap:16px">
+              <button type="button" onClick="{{ savePersonal }}" style="padding:14px 26px;border:0;border-radius:8px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:16px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">Save changes</button>
+              <button type="button" onClick="{{ cancelPersonal }}" style="padding:14px 26px;border:1px solid #2e46b9;border-radius:8px;background:#ffffff;font-family:inherit;font-size:16px;font-weight:700;color:#2e46b9;cursor:pointer" style-hover="background:#eaf0ff">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+    <section style="margin-bottom:14px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-bottom:10px;border-bottom:1px solid #dfe1eb">
+        <div style="display:flex;align-items:baseline;gap:20px">
+          <h2 style="margin:0;font-size:26px;font-weight:600;color:#3d3d47;letter-spacing:-.01em">Change password</h2>
+          <button type="button" onClick="{{ togglePassword }}" style="flex:0 0 auto;padding:0;border:0;background:transparent;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2e46b9;cursor:pointer">{{ passwordLabel }}</button>
+        </div>
+      </div>
+      <sc-if value="{{ passwordForm }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:24px 0 34px;max-width:600px">
+          <div style="margin-bottom:26px">
+            <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Current password</label>
+            <input type="password" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
+          </div>
+          <div style="margin-bottom:26px">
+            <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">New password</label>
+            <input type="password" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
+            <div style="margin-top:8px;font-size:15px;color:#646776">At least 12 characters, with one number and one symbol.</div>
+          </div>
+          <div style="margin-bottom:26px">
+            <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Confirm new password</label>
+            <input type="password" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
+          </div>
+          <button type="button" onClick="{{ savePassword }}" style="padding:14px 26px;border:0;border-radius:8px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:16px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">Change password</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ passwordDone }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:24px 0 34px">
+          <div style="display:flex;align-items:center;gap:12px;max-width:600px;margin-bottom:20px;padding:16px 20px;border-radius:8px;background:#e6f6ed">
+            <i class="ph-fill ph-check-circle" aria-hidden="true" style="font-size:22px;line-height:1;color:#00a759"></i>
+            <span style="font-size:17px;font-weight:600;color:#1a1a1a">Your password was updated.</span>
+          </div>
+          <button type="button" onClick="{{ resetPassword }}" style="padding:0;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:#2e46b9;cursor:pointer" style-hover="text-decoration:underline">Change it again</button>
+        </div>
+      </sc-if>
+    </section>
+
+    <section style="margin-bottom:14px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-bottom:10px;border-bottom:1px solid #dfe1eb">
+        <div style="display:flex;align-items:baseline;gap:20px">
+          <h2 style="margin:0;font-size:26px;font-weight:600;color:#3d3d47;letter-spacing:-.01em">Get more reviews</h2>
+          <button type="button" onClick="{{ toggleReviews }}" style="flex:0 0 auto;padding:0;border:0;background:transparent;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2e46b9;cursor:pointer">{{ reviewsLabel }}</button>
+        </div>
+      </div>
+      <sc-if value="{{ reviewsOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:24px 0 34px">
+          <p style="margin:0 0 8px;font-size:18px;font-weight:700;color:#1a1a1a">Homeowners read your reviews before they call you.</p>
+          <p style="margin:0 0 34px;max-width:660px;font-size:17px;color:#3d3d47;line-height:1.5">Email past and current customers a direct link to your company profile. It is the fastest way to add reviews.</p>
+
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px">
+            <span style="font-size:17px;font-weight:700;color:#1a1a1a">Option 1</span>
+            <span style="font-size:17px;color:#3d3d47">Send from this form</span>
+          </div>
+          <div style="max-width:640px">
+            <div style="margin-bottom:26px">
+              <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">From</label>
+              <input type="text" readonly="readonly" value="Summit Peak Solar via EnergySage &lt;automated@energysage.com&gt;" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f2f2f4;font-family:inherit;font-size:17px;color:#646776;outline:none">
+            </div>
+            <div style="margin-bottom:18px">
+              <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">To</label>
+              <textarea placeholder="name@example.com, another@example.com" style="width:100%;box-sizing:border-box;height:120px;padding:14px 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;line-height:1.5;resize:vertical;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff"></textarea>
+              <div style="margin-top:8px;font-size:15px;color:#646776">Up to 25 email addresses, separated by commas or on separate lines.</div>
+            </div>
+            <label style="display:flex;align-items:center;gap:10px;margin-bottom:26px;font-size:17px;color:#3d3d47;cursor:pointer">
+              <input type="checkbox" style="width:20px;height:20px;accent-color:#2e46b9;cursor:pointer">These customers have done business with my company
+            </label>
+            <div style="margin-bottom:26px">
+              <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Subject</label>
+              <input type="text" defaultValue="Please review Summit Peak Solar on EnergySage" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
+              <div style="margin-top:8px;font-size:15px;color:#646776">Edit as needed.</div>
+            </div>
+            <div style="margin-bottom:26px">
+              <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Message</label>
+              <textarea defaultValue="Thanks again for going solar with us. If you have a minute, we would appreciate a short review of your experience." style="width:100%;box-sizing:border-box;height:120px;padding:14px 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;line-height:1.5;resize:vertical;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff"></textarea>
+            </div>
+            <button type="button" style="padding:14px 26px;border:0;border-radius:8px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:16px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">Send request</button>
+          </div>
+
+          <div style="max-width:640px;height:1px;margin:38px 0 26px;background:#eceef5"></div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <span style="font-size:17px;font-weight:700;color:#1a1a1a">Option 2</span>
+            <span style="font-size:17px;color:#3d3d47">Share your review link</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;max-width:640px">
+            <input type="text" readonly="readonly" value="energysage.com/r/summit-peak-solar" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f2f2f4;font-family:inherit;font-size:17px;color:#3d3d47;outline:none">
+            <button type="button" onClick="{{ copyLink }}" style="flex:0 0 auto;white-space:nowrap;padding:14px 26px;border:1px solid #2e46b9;border-radius:8px;background:#ffffff;font-family:inherit;font-size:16px;font-weight:700;color:#2e46b9;cursor:pointer" style-hover="background:#eaf0ff">{{ copyLabel }}</button>
+          </div>
+          <div style="max-width:640px;margin-top:8px;font-size:15px;color:#646776">Paste it into your own emails, invoices, or text messages.</div>
+        </div>
+      </sc-if>
+    </section>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:1100}}">
+class Component extends DCLogic {
+  state = {
+    quoteOpen: false, accountOpen: false,
+    open: { personal: true, email: false, password: false, reviews: false },
+    editingPersonal: false,
+    profile: { screenName: "bartholomew.reed+summitpeak", about: "Twelve years designing residential arrays across New England.", phone: "(617) 555-0148" },
+    draft: null,
+    pwSaved: false,
+    copied: false,
+  };
+
+  componentDidMount() {
+    this._away = (e) => {
+      if (!e.target.closest || !e.target.closest("header")) this.setState({ quoteOpen: false, accountOpen: false });
+    };
+    document.addEventListener("click", this._away);
+  }
+  componentWillUnmount() { document.removeEventListener("click", this._away); }
+
+  flip(key) { this.setState(s => ({ open: Object.assign({}, s.open, { [key]: !s.open[key] }) })); }
+  label(key) { return this.state.open[key] ? "Hide" : "Show"; }
+
+  renderVals() {
+    const { open, profile, draft, editingPersonal } = this.state;
+    const d = draft || profile;
+    return {
+      quoteOpen: this.state.quoteOpen,
+      accountOpen: this.state.accountOpen,
+      quoteCaretStyle: `transition:transform 150ms ease-out;transform:${this.state.quoteOpen ? "rotate(180deg)" : "none"}`,
+      toggleQuote: (e) => { e.stopPropagation(); this.setState(s => ({ quoteOpen: !s.quoteOpen, accountOpen: false })); },
+      toggleAccount: (e) => { e.stopPropagation(); this.setState(s => ({ accountOpen: !s.accountOpen, quoteOpen: false })); },
+
+      screenName: profile.screenName,
+      about: profile.about,
+      phone: profile.phone,
+      draftScreenName: d.screenName,
+      draftAbout: d.about,
+      draftPhone: d.phone,
+      onScreenName: (e) => this.setState(s => ({ draft: Object.assign({}, s.draft || s.profile, { screenName: e.target.value }) })),
+      onAbout: (e) => this.setState(s => ({ draft: Object.assign({}, s.draft || s.profile, { about: e.target.value }) })),
+      onPhone: (e) => this.setState(s => ({ draft: Object.assign({}, s.draft || s.profile, { phone: e.target.value }) })),
+
+      personalLabel: this.label("personal"),
+      togglePersonal: () => this.flip("personal"),
+      personalRead: open.personal && !editingPersonal,
+      personalEdit: open.personal && editingPersonal,
+      editPersonal: () => this.setState(s => ({ editingPersonal: true, draft: Object.assign({}, s.profile), open: Object.assign({}, s.open, { personal: true }) })),
+      savePersonal: () => this.setState(s => ({ editingPersonal: false, profile: Object.assign({}, s.profile, s.draft), draft: null })),
+      cancelPersonal: () => this.setState({ editingPersonal: false, draft: null }),
+
+      emailLabel: this.label("email"),
+      toggleEmail: () => this.flip("email"),
+      emailOpen: open.email,
+
+      passwordLabel: this.label("password"),
+      togglePassword: () => this.flip("password"),
+      passwordForm: open.password && !this.state.pwSaved,
+      passwordDone: open.password && this.state.pwSaved,
+      savePassword: () => this.setState({ pwSaved: true }),
+      resetPassword: () => this.setState({ pwSaved: false }),
+
+      reviewsLabel: this.label("reviews"),
+      toggleReviews: () => this.flip("reviews"),
+      reviewsOpen: open.reviews,
+      copyLabel: this.state.copied ? "Copied" : "Copy link",
+      copyLink: () => {
+        if (navigator.clipboard) navigator.clipboard.writeText("https://energysage.com/r/summit-peak-solar");
+        this.setState({ copied: true });
+        setTimeout(() => this.setState({ copied: false }), 2000);
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
