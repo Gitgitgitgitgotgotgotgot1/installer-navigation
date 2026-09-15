@@ -21,12 +21,12 @@
 <div style="background:#ffffff;font-family:'Plus Jakarta Sans',sans-serif;color:#1b1763;min-width:1180px">
 
   <header style="position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;height:93px;padding:0 40px;background:#ffffff;z-index:30">
-    <a href="#" style="display:flex;align-items:center;text-decoration:none">
+    <a href="Leads.dc.html" style="display:flex;align-items:center;text-decoration:none">
       <img src="assets/logo-energysage.svg" alt="energysage" style="height:38px;width:auto;display:block">
     </a>
 
     <nav style="display:flex;align-items:center;justify-content:center;gap:44px">
-      <a href="Installer%20Nav%20Redesign.dc.html" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Leads
+      <a href="Leads.dc.html" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Leads
         <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#ffc28b;color:#1b1763;font-size:13px;font-weight:700;line-height:1">15</span>
       </a>
       <a href="#" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Messages
@@ -35,11 +35,11 @@
       <a href="#" style="font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Insights</a>
 
       <div style="position:relative">
-        <button type="button" onClick="{{ toggleQuote }}" style="display:flex;align-items:center;gap:8px;padding:0;border:0;background:transparent;font-family:inherit;font-size:17px;font-weight:700;color:#2e46b9;cursor:pointer">Quote setup<i class="ph ph-caret-down" aria-hidden="true" style="font-size: 16px; line-height: 1; transition: transform 150ms ease-out; transform: rotate(180deg);"></i>
+        <button type="button" onClick="{{ toggleQuote }}" style="display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; font-family: inherit; font-size: 17px; font-weight: 700; color: #1B1763; cursor: pointer">Quote setup<i class="ph ph-caret-down" aria-hidden="true" style="font-size: 16px; line-height: 1; transition: transform 150ms ease-out; transform: rotate(180deg);"></i>
         </button>
         <sc-if value="{{ quoteOpen }}" hint-placeholder-val="{{ false }}">
           <div style="position:absolute;top:calc(100% + 22px);left:50%;transform:translateX(-50%);min-width:252px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
-            <a href="Quote%20Settings.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Quote packages</a>
+            <a href="Quote-Settings.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Quote packages</a>
             <a href="#" style="padding:13px 28px;font-size:16px;font-weight:600;color:#2e46b9;text-decoration:none;white-space:nowrap;background:#f1f3fb" style-hover="text-decoration:none">Autoquote packages</a>
             <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Territories</a>
           </div>
@@ -108,12 +108,12 @@
             </div>
 
             <div>
-              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Utility</h3>
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Utility provider</h3>
               <div style="font-size:16px;font-weight:400;color:#3d3d47">{{ r.utility }}</div>
             </div>
 
             <div>
-              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Base package</h3>
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Packages</h3>
               <div style="font-size:16px;font-weight:400;color:#3d3d47;line-height:1.5">{{ r.basePackage }}</div>
             </div>
 
