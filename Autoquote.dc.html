@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet">
+<link href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #ffffff; font-family: "Plus Jakarta Sans", sans-serif; color: #1b1763; -webkit-font-smoothing: antialiased; }
+  a { color: #2e46b9; text-decoration: none; }
+  a:hover { color: #2e46b9; text-decoration: underline; }
+</style>
+</helmet>
+<div style="background:#ffffff;font-family:'Plus Jakarta Sans',sans-serif;color:#1b1763;min-width:1180px">
+
+  <header style="position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;height:93px;padding:0 40px;background:#ffffff;z-index:30">
+    <a href="index.dc.html" style="display:flex;align-items:center;text-decoration:none">
+      <img src="assets/logo-energysage.svg" alt="energysage" style="height:38px;width:auto;display:block">
+    </a>
+
+    <nav style="display:flex;align-items:center;justify-content:center;gap:44px">
+      <a href="index.dc.html" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Leads
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#ffc28b;color:#1b1763;font-size:13px;font-weight:700;line-height:1">15</span>
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:9px;font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Messages
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#ffc28b;color:#1b1763;font-size:13px;font-weight:700;line-height:1">1</span>
+      </a>
+      <a href="#" style="font-size:17px;font-weight:600;color:#1b1763;text-decoration:none">Insights</a>
+
+      <div style="position:relative">
+        <button type="button" onClick="{{ toggleQuote }}" style="display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; font-family: inherit; font-size: 17px; font-weight: 700; color: #1B1763; cursor: pointer">Quote settings<i class="ph ph-caret-down" aria-hidden="true" style="font-size: 16px; line-height: 1; transition: transform 150ms ease-out; transform: rotate(180deg);"></i>
+        </button>
+        <sc-if value="{{ quoteOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:calc(100% + 22px);left:50%;transform:translateX(-50%);min-width:252px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
+            <a href="Quote-Settings.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Quote packages</a>
+            <a href="#" style="padding:13px 28px;font-size:16px;font-weight:600;color:#2e46b9;text-decoration:none;white-space:nowrap;background:#f1f3fb" style-hover="text-decoration:none">Autoquote packages</a>
+            <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Territories</a>
+          </div>
+        </sc-if>
+      </div>
+    </nav>
+
+    <div style="position:relative;justify-self:end">
+      <button type="button" onClick="{{ toggleAccount }}" style="display:flex;align-items:center;gap:10px;padding:0;border:0;background:transparent;font-family:inherit;font-size:17px;font-weight:600;color:#1b1763;cursor:pointer">Bartholomew
+        <i class="ph ph-user" aria-hidden="true" style="font-size:28px;line-height:1"></i>
+      </button>
+      <sc-if value="{{ accountOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:calc(100% + 22px);right:0;min-width:276px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
+          <a href="Profile.dc.html" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Profile</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Marketplace roles</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Invoices and rebates</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Resource center</a>
+          <a href="#" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap" style-hover="background:#f1f3fb;text-decoration:none">Sign out</a>
+        </div>
+      </sc-if>
+    </div>
+  </header>
+
+  <main style="max-width:1000px;margin:0 auto;padding:24px 40px 96px">
+    <h1 style="margin:0 0 26px;font-size:30px;font-weight:700;color:#1a1a1a;letter-spacing:-.01em">Autoquote packages</h1>
+
+    <button type="button" style="display:inline-flex;align-items:center;gap:9px;margin-bottom:40px;padding:14px 26px;border:0;border-radius:8px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:17px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">
+      <i class="ph ph-plus" aria-hidden="true" style="font-size: 17px; line-height: 1;"></i>Add package&nbsp;&nbsp;</button>
+
+    <div style="margin-bottom:20px">
+      <button type="button" style="display:inline-flex;align-items:center;gap:12px;padding:11px 18px;border:1px solid #b9bcc9;border-radius:8px;background:#ffffff;font-family:inherit;font-size:16px;font-weight:600;color:#1b1763;cursor:pointer">Sort by
+        <i class="ph ph-caret-down" aria-hidden="true" style="font-size:16px;line-height:1;color:#646776"></i>
+      </button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <sc-for list="{{ rules }}" as="r" hint-placeholder-count="2">
+        <article style="padding:24px 28px;border:1px solid #dfe1eb;border-radius:12px;background:#ffffff">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:22px">
+            <div style="display:flex;align-items:center;gap:16px;min-width:0">
+              <h2 style="margin:0;font-size:22px;font-weight:700;color:#1a1a1a;letter-spacing:-.01em">{{ r.name }}</h2>
+              <button type="button" onClick="{{ r.toggle }}" aria-label="Enable autoquote" style="{{ r.switchStyle }}">
+                <span style="{{ r.knobStyle }}"></span>
+              </button>
+              <span style="font-size:15px;font-weight:600;color:#646776">{{ r.stateLabel }}</span>
+            </div>
+            <div style="flex:0 0 auto;display:flex;align-items:center;gap:20px">
+              <a href="#" style="font-size:16px;font-weight:500;color:#2e46b9">Delete</a>
+              <button type="button" style="padding:11px 30px;border:1px solid #2e46b9;border-radius:8px;background:#ffffff;font-family:inherit;font-size:16px;font-weight:700;color:#2e46b9;cursor:pointer" style-hover="background:#eaf0ff">Edit</button>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div>
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Location</h3>
+              <div style="font-size:15px;font-weight:700;color:#3d3d47;margin-bottom:4px">{{ r.state }}</div>
+              <div style="font-size:16px;font-weight:400;color:#3d3d47;line-height:1.5">{{ r.counties }}</div>
+              <button type="button" onClick="{{ r.toggleMore }}" style="display:inline-flex;align-items:center;gap:5px;margin-top:6px;padding:0;border:0;background:transparent;font-family:inherit;font-size:15px;font-weight:500;color:#646776;cursor:pointer">{{ r.moreLabel }}
+                <i class="{{ r.moreIcon }}" aria-hidden="true" style="font-size:14px;line-height:1"></i>
+              </button>
+            </div>
+
+            <div>
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Schedule</h3>
+              <div style="font-size:16px;font-weight:400;color:#3d3d47">{{ r.schedule }}</div>
+            </div>
+
+            <div>
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Utility provider</h3>
+              <div style="font-size:16px;font-weight:400;color:#3d3d47">{{ r.utility }}</div>
+            </div>
+
+            <div>
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Packages</h3>
+              <div style="font-size:16px;font-weight:400;color:#3d3d47;line-height:1.5">{{ r.basePackage }}</div>
+            </div>
+
+            <div>
+              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Sales reps</h3>
+              <div style="font-size:16px;font-weight:400;color:#3d3d47">{{ r.reps }}</div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:1100}}">
+const RULES = [
+  {
+    name: "Massachusetts residential",
+    on: true,
+    state: "Massachusetts",
+    counties: ["Barnstable County", "Bristol County", "Essex County", "Middlesex County", "Norfolk County", "Plymouth County", "Suffolk County", "Worcester County"],
+    schedule: "Mon, Tues, Wed, Thurs, Fri",
+    utility: "Eversource, National Grid",
+    basePackage: "MA Incentives, Sunlight 20 year, Dividend, Always Sunny Introduction",
+    reps: "Dennis Reynolds",
+  },
+  {
+    name: "Illinois expansion",
+    on: true,
+    state: "Illinois",
+    counties: ["Adams County", "Macon County", "Macoupin County", "Marion County", "Massac County", "McLean County", "Peoria County", "Sangamon County", "Will County"],
+    schedule: "Mon, Tues, Wed, Thurs, Fri, Sat, Sun",
+    utility: "N/A",
+    basePackage: "FL Incentive, Atmos 25 Year Loan (IL), Atmos 25 Year Loan (IL)",
+    reps: "Frank Reynolds",
+  },
+  {
+    name: "Connecticut pilot",
+    on: false,
+    state: "Connecticut",
+    counties: ["Fairfield County", "Hartford County", "New Haven County"],
+    schedule: "Mon, Wed, Fri",
+    utility: "United Illuminating",
+    basePackage: "CT Incentive, GoodLeap 25 Year Loan",
+    reps: "Charlie Kelly, Deandra Reynolds",
+  },
+];
+
+const SWITCH_BASE = "position:relative;flex:0 0 auto;width:48px;height:26px;padding:0;border:0;border-radius:999px;cursor:pointer;transition:background 150ms ease-out;";
+const KNOB_BASE = "position:absolute;top:3px;width:20px;height:20px;border-radius:999px;background:#ffffff;transition:left 150ms ease-out;";
+
+class Component extends DCLogic {
+  state = {
+    quoteOpen: false, accountOpen: false,
+    on: RULES.map(r => r.on),
+    more: RULES.map(() => false),
+  };
+
+  componentDidMount() {
+    this._away = (e) => {
+      if (!e.target.closest || !e.target.closest("header")) this.setState({ quoteOpen: false, accountOpen: false });
+    };
+    document.addEventListener("click", this._away);
+  }
+  componentWillUnmount() { document.removeEventListener("click", this._away); }
+
+  renderVals() {
+    return {
+      quoteOpen: this.state.quoteOpen,
+      accountOpen: this.state.accountOpen,
+      quoteCaretStyle: `transition:transform 150ms ease-out;transform:${this.state.quoteOpen ? "rotate(180deg)" : "none"}`,
+      toggleQuote: (e) => { e.stopPropagation(); this.setState(s => ({ quoteOpen: !s.quoteOpen, accountOpen: false })); },
+      toggleAccount: (e) => { e.stopPropagation(); this.setState(s => ({ accountOpen: !s.accountOpen, quoteOpen: false })); },
+
+      rules: RULES.map((r, i) => {
+        const on = this.state.on[i];
+        const expanded = this.state.more[i];
+        const shown = expanded ? r.counties : r.counties.slice(0, 5);
+        const hidden = r.counties.length - shown.length;
+        return {
+          name: r.name,
+          state: r.state,
+          counties: shown.join(", ") + (hidden > 0 ? "," : ""),
+          moreLabel: expanded ? "Less" : `More (${hidden})`,
+          moreIcon: expanded ? "ph ph-arrow-up" : "ph ph-arrow-down",
+          toggleMore: () => this.setState(s => { const m = s.more.slice(); m[i] = !m[i]; return { more: m }; }),
+          schedule: r.schedule,
+          utility: r.utility,
+          basePackage: r.basePackage,
+          reps: r.reps,
+          stateLabel: on ? "On" : "Off",
+          switchStyle: SWITCH_BASE + (on ? "background:#2e46b9;" : "background:#b9bcc9;"),
+          knobStyle: KNOB_BASE + (on ? "left:25px;" : "left:3px;"),
+          toggle: () => this.setState(s => { const o = s.on.slice(); o[i] = !o[i]; return { on: o }; }),
+        };
+      }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
