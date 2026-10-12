@@ -46,7 +46,7 @@
           <div style="position:absolute;top:calc(100% + 22px);left:50%;transform:translateX(-50%);min-width:252px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
             <button type="button" onClick="{{ goPackages }}" style="{{ packagesMenuStyle }}">Quote packages</button>
             <button type="button" onClick="{{ goAutoquote }}" style="{{ autoquoteMenuStyle }}">Autoquote packages</button>
-            <button type="button" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap;background:transparent;border:0;font-family:inherit;text-align:left;cursor:pointer">Territories</button>
+            <button type="button" onClick="{{ goTerritories }}" style="{{ territoriesMenuStyle }}">Territories</button>
           </div>
         </sc-if>
       </div>
@@ -60,7 +60,7 @@
         <div style="position:absolute;top:calc(100% + 22px);right:0;min-width:276px;padding:14px 0;background:#ffffff;border-radius:12px;box-shadow:0 4px 18px rgba(27,23,99,.16);display:flex;flex-direction:column">
           <button type="button" onClick="{{ goProfile }}" style="{{ profileMenuStyle }}">Profile</button>
           <button type="button" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap;background:transparent;border:0;font-family:inherit;text-align:left;cursor:pointer">Marketplace roles</button>
-          <button type="button" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap;background:transparent;border:0;font-family:inherit;text-align:left;cursor:pointer">Invoices and rebates</button>
+          <button type="button" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap;background:transparent;border:0;font-family:inherit;text-align:left;cursor:pointer">Billing</button>
           <button type="button" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap;background:transparent;border:0;font-family:inherit;text-align:left;cursor:pointer">Resource center</button>
           <button type="button" style="padding:13px 28px;font-size:16px;font-weight:500;color:#1b1763;text-decoration:none;white-space:nowrap;background:transparent;border:0;font-family:inherit;text-align:left;cursor:pointer">Sign out</button>
         </div>
@@ -196,7 +196,7 @@
           <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
             <div style="padding:22px 0 34px">
               <button type="button" onClick="{{ s.onAdd }}" style="display:inline-flex;align-items:center;gap:9px;margin-bottom:28px;padding:12px 22px;border:0;border-radius:8px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:16px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">
-                Add package
+                <i class="ph ph-plus" aria-hidden="true" style="font-size:17px;line-height:1"></i>Add package
               </button>
 
               <div style="display:flex;align-items:center;gap:28px;margin-bottom:14px">
@@ -378,7 +378,7 @@
     <h1 style="margin:0 0 26px;font-size:30px;font-weight:700;color:#1a1a1a;letter-spacing:-.01em">Autoquote packages</h1>
 
     <button type="button" style="display:inline-flex;align-items:center;gap:9px;margin-bottom:40px;padding:14px 26px;border:0;border-radius:8px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:17px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">
-    Add package&nbsp;&nbsp;</button>
+      <i class="ph ph-plus" aria-hidden="true" style="font-size: 17px; line-height: 1;"></i>Add package&nbsp;&nbsp;</button>
 
     <div style="margin-bottom:20px">
       <button type="button" style="display:inline-flex;align-items:center;gap:12px;padding:11px 18px;border:1px solid #b9bcc9;border-radius:8px;background:#ffffff;font-family:inherit;font-size:16px;font-weight:600;color:#1b1763;cursor:pointer">Sort by
@@ -443,84 +443,50 @@
   <sc-if value="{{ onProfile }}" hint-placeholder-val="{{ false }}">
     <div>
 <main style="max-width:1000px;margin:0 auto;padding:24px 40px 96px">
-    <h1 style="margin:0 0 30px;font-size:36px;font-weight:700;color:#1a1a1a;letter-spacing:-.015em">Profile</h1>
+    <h1 style="margin:0 0 8px;font-size:36px;font-weight:700;color:#1a1a1a;letter-spacing:-.015em">Profile</h1>
+    <p style="margin: 0 0 44px; font-size: 17px; color: #646776; display: none">Manage your own account here. Your company profile has its own editor.</p>
 
-    <div style="display:grid;grid-template-columns:1.35fr 1fr;margin-bottom:48px;border:1px solid #dfe1eb;border-radius:12px;overflow:hidden">
-      <div style="display:flex;align-items:center;gap:26px;padding:26px 28px;background:#f4f4fb">
-        <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:112px;height:112px;border-radius:8px;background:#8a8a92">
-          <i class="ph-fill ph-user" aria-hidden="true" style="font-size:64px;line-height:1;color:#dcdce2"></i>
+    <section style="margin-bottom:40px">
+      <p style="margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #646776; display: none">You</p>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:18px">
+        <div>
+          <h2 style="margin: 0; font-size: 24px; font-weight: 600; color: #1a1a1a; letter-spacing: -.01em">Your profile</h2>
+          <p style="margin:6px 0 0;font-size:16px;color:#646776">Your name and photo appear on quotes and messages you send.</p>
         </div>
-        <div style="min-width:0">
-          <div style="font-size:22px;font-weight:600;color:#1a1a1a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:8px">{{ screenName }}</div>
-          <div style="font-size:16px;color:#646776;margin-bottom:14px">Sales lead · Boston, MA</div>
-          
-        </div>
-      </div>
-      <div style="padding:26px 28px;background:#f1f3fb">
-        <div style="padding-bottom:10px;border-bottom:1px solid #dfe1eb;font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#2e46b9">Summit Peak Solar</div>
-        <div style="display:flex;align-items:center;gap:12px;margin:14px 0 12px">
-          <span style="display:inline-flex;gap:2px;color:#ff9133;font-size:20px;line-height:1">
-            <i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i>
-          </span>
-          <span style="font-size:16px;color:#646776">(10)</span>
-        </div>
-        <p style="margin:0 0 16px;font-size:16px;line-height:1.5;color:#3d3d47">We work all throughout New England and can give you the best experience from design to switch-on.</p>
-        <a href="#" style="font-size:16px;font-weight:600;color:#2e46b9">Edit your company profile</a>
-      </div>
-    </div>
-
-    <section style="margin-bottom:14px">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-bottom:10px;border-bottom:1px solid #dfe1eb">
-        <div style="display:flex;align-items:baseline;gap:20px">
-          <h2 style="margin:0;font-size:26px;font-weight:600;color:#3d3d47;letter-spacing:-.01em">Personal profile</h2>
-          <button type="button" onClick="{{ togglePersonal }}" style="flex:0 0 auto;padding:0;border:0;background:transparent;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2e46b9;cursor:pointer">{{ personalLabel }}</button>
-        </div>
-        <sc-if value="{{ personalRead }}" hint-placeholder-val="{{ true }}">
-          <button type="button" onClick="{{ editPersonal }}" style="flex:0 0 auto;padding:0;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:#2e46b9;cursor:pointer" style-hover="text-decoration:underline">Edit</button>
-        </sc-if>
       </div>
 
       <sc-if value="{{ personalRead }}" hint-placeholder-val="{{ true }}">
-        <div style="padding:24px 0 34px">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding-bottom:16px;border-bottom:1px solid #eceef5">
-            <div style="display:flex;align-items:center;gap:22px">
-              <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:88px;height:88px;border-radius:8px;background:#8a8a92">
-                <i class="ph-fill ph-user" aria-hidden="true" style="font-size:50px;line-height:1;color:#dcdce2"></i>
-              </div>
-              <div>
-                <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Profile image</h3>
-                <div style="font-size:16px;color:#646776">No image yet — 300×300 px works best.</div>
-              </div>
+        <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:start;gap:28px;padding:28px;border:1px solid #dfe1eb;border-radius:12px;background:#ffffff">
+          <div style="display:flex;align-items:center;justify-content:center;width:104px;height:104px;border-radius:999px;background:#8a8a92">
+            <i class="ph-fill ph-user" aria-hidden="true" style="font-size:58px;line-height:1;color:#dcdce2"></i>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px">
+            <div>
+              <p style="margin:0 0 4px;font-size:14px;font-weight:600;color:#646776">Screen name</p>
+              <div style="font-size:17px;color:#1a1a1a;line-height:1.5;overflow-wrap:anywhere">{{ screenName }}</div>
+            </div>
+            <div>
+              <p style="margin:0 0 4px;font-size:14px;font-weight:600;color:#646776">Phone number</p>
+              <div style="font-size:17px;color:#1a1a1a;line-height:1.5">{{ phone }}</div>
+            </div>
+            <div style="grid-column:1 / -1">
+              <p style="margin:0 0 4px;font-size:14px;font-weight:600;color:#646776">About you</p>
+              <div style="font-size:17px;color:#1a1a1a;line-height:1.5">{{ about }}</div>
+            </div>
+            <div style="grid-column:1 / -1">
+              <p style="margin:0 0 4px;font-size:14px;font-weight:600;color:#646776">Email</p>
+              <div style="font-size:17px;color:#1a1a1a;line-height:1.5">bartholomew.reed@summitpeaksolar.com</div>
+              <p style="margin:6px 0 0;font-size:15px;color:#646776;line-height:1.5">To change it, contact your EnergySage support representative or <a href="mailto:sales@energysage.com" style="font-weight:600;color:#2e46b9">sales@energysage.com</a>.</p><button type="button" onClick="{{ goSetPassword }}" style="display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; font-family: inherit; font-size: 17px; font-weight: 600; color: #2e46b9; cursor: pointer; padding-top: 16px; padding-right: 0px; padding-bottom: 16px; padding-left: 0px" style-hover="text-decoration:underline">Change password</button>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;padding:16px 0;border-bottom:1px solid #eceef5">
-            <div style="min-width:0">
-              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Screen name</h3>
-              <div style="font-size:17px;color:#3d3d47;line-height:1.5">{{ screenName }}</div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;padding:16px 0;border-bottom:1px solid #eceef5">
-            <div style="min-width:0">
-              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">About you</h3>
-              <div style="font-size:17px;color:#3d3d47;line-height:1.5">{{ about }}</div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;padding:16px 0;border-bottom:1px solid #eceef5">
-            <div style="min-width:0">
-              <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Phone number</h3>
-              <div style="font-size:17px;color:#3d3d47;line-height:1.5">{{ phone }}</div>
-            </div>
-          </div>
-          <div style="padding:16px 0">
-            <h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#1a1a1a">Email</h3>
-            <div style="font-size:17px;color:#3d3d47;line-height:1.5">bartholomew.reed@summitpeaksolar.com</div>
-            <p style="margin:10px 0 0;max-width:640px;font-size:16px;color:#646776;line-height:1.5">To change your email address, contact your EnergySage Marketplace support representative or <a href="mailto:sales@energysage.com" style="font-weight:600;color:#2e46b9">sales@energysage.com</a>.</p>
-          </div>
+          <button type="button" onClick="{{ editPersonal }}" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:1px solid #2e46b9;border-radius:8px;background:#ffffff;font-family:inherit;font-size:16px;font-weight:700;color:#2e46b9;cursor:pointer" style-hover="background:#eaf0ff">
+            <i class="ph ph-pencil-simple" aria-hidden="true" style="font-size:18px;line-height:1"></i>Edit
+          </button>
         </div>
       </sc-if>
 
       <sc-if value="{{ personalEdit }}" hint-placeholder-val="{{ false }}">
-        <div style="padding:24px 0 34px">
+        <div style="padding:28px 28px 32px;border:1px solid #dfe1eb;border-radius:12px;background:#ffffff">
           <p style="margin:0 0 26px;font-size:17px;color:#646776">Update any of the fields below, then save to publish your changes.</p>
           <div style="display:flex;align-items:flex-start;gap:26px;margin-bottom:34px">
             <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:132px;height:132px;border-radius:8px;background:#8a8a92">
@@ -564,52 +530,60 @@
           </div>
         </div>
       </sc-if>
+
+    <div style="padding: 20px 0 0; display: none">
+      
+    </div>
+
+
     </section>
 
-    <section style="margin-bottom:14px">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-bottom:10px;border-bottom:1px solid #dfe1eb">
-        <div style="display:flex;align-items:baseline;gap:20px">
-          <h2 style="margin:0;font-size:26px;font-weight:600;color:#3d3d47;letter-spacing:-.01em">Change password</h2>
-          <button type="button" onClick="{{ togglePassword }}" style="flex:0 0 auto;padding:0;border:0;background:transparent;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2e46b9;cursor:pointer">{{ passwordLabel }}</button>
-        </div>
+    <section>
+      <p style="margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#646776;display:none">Your company</p>
+      <div style="margin-bottom:18px">
+        <h2 style="margin: 0; font-size: 24px; font-weight: 600; color: #1a1a1a; letter-spacing: -.01em">Company profile</h2>
+        <p style="margin:6px 0 0;font-size:16px;color:#646776">The public page homeowners see when they compare your quotes.</p>
       </div>
-      <sc-if value="{{ passwordForm }}" hint-placeholder-val="{{ false }}">
-        <div style="padding:24px 0 34px;max-width:600px">
-          <div style="margin-bottom:26px">
-            <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Current password</label>
-            <input type="password" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
-          </div>
-          <div style="margin-bottom:26px">
-            <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">New password</label>
-            <input type="password" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
-            <div style="margin-top:8px;font-size:15px;color:#646776">At least 12 characters, with one number and one symbol.</div>
-          </div>
-          <div style="margin-bottom:26px">
-            <label style="display:block;margin-bottom:10px;font-size:17px;font-weight:500;color:#3d3d47">Confirm new password</label>
-            <input type="password" style="width:100%;box-sizing:border-box;height:56px;padding:0 16px;border:1px solid #c5c7d6;border-radius:4px;background:#f4f4fb;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
-          </div>
-          <button type="button" onClick="{{ savePassword }}" style="padding:14px 26px;border:0;border-radius:8px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:16px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">Change password</button>
-        </div>
-      </sc-if>
-      <sc-if value="{{ passwordDone }}" hint-placeholder-val="{{ false }}">
-        <div style="padding:24px 0 34px">
-          <div style="display:flex;align-items:center;gap:12px;max-width:600px;margin-bottom:20px;padding:16px 20px;border-radius:8px;background:#e6f6ed">
-            <i class="ph-fill ph-check-circle" aria-hidden="true" style="font-size:22px;line-height:1;color:#00a759"></i>
-            <span style="font-size:17px;font-weight:600;color:#1a1a1a">Your password was updated.</span>
-          </div>
-          <button type="button" onClick="{{ resetPassword }}" style="padding:0;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:#2e46b9;cursor:pointer" style-hover="text-decoration:underline">Change it again</button>
-        </div>
-      </sc-if>
-    </section>
 
-    <section style="margin-bottom:14px">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-bottom:10px;border-bottom:1px solid #dfe1eb">
-        <div style="display:flex;align-items:baseline;gap:20px">
-          <h2 style="margin:0;font-size:26px;font-weight:600;color:#3d3d47;letter-spacing:-.01em">Get more reviews</h2>
-          <button type="button" onClick="{{ toggleReviews }}" style="flex:0 0 auto;padding:0;border:0;background:transparent;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#2e46b9;cursor:pointer">{{ reviewsLabel }}</button>
+      <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);border:1px solid #dfe1eb;border-radius:12px;overflow:hidden;background:#ffffff">
+        <div style="display:flex;gap:22px;padding:28px">
+          <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:88px;height:88px;border-radius:8px;background:#f1f3fb;border:1px solid #dfe1eb">
+            <i class="ph ph-buildings" aria-hidden="true" style="font-size:40px;line-height:1;color:#646776"></i>
+          </div>
+          <div style="min-width:0">
+            <div style="font-size:22px;font-weight:600;color:#1a1a1a;margin-bottom:6px">Summit Peak Solar</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+              <span style="display:inline-flex;gap:2px;color:#ff9133;font-size:18px;line-height:1">
+                <i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i>
+              </span>
+              <span style="font-size:15px;color:#646776">10 reviews</span>
+            </div>
+            <p style="margin:0 0 20px;font-size:16px;line-height:1.5;color:#3d3d47">We work all throughout New England and can give you the best experience from design to switch-on.</p>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:700;color:#2e46b9">Edit company profile
+              <i class="ph ph-arrow-right" aria-hidden="true" style="font-size: 18px; line-height: 1; display: none"></i>
+            </a>
+          </div>
+        </div>
+        <div style="padding:28px;background:#f1f3fb;border-left:1px solid #dfe1eb">
+          <p style="margin:0 0 4px;font-size:16px;font-weight:700;color:#1a1a1a">3 of 5 sections complete</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#646776;line-height:1.5">Complete profiles get more replies from homeowners.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;color:#1a1a1a">
+            <div style="display:flex;align-items:center;gap:10px"><i class="ph-fill ph-check-circle" aria-hidden="true" style="font-size:20px;line-height:1;color:#00a759"></i>About your company</div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="ph-fill ph-check-circle" aria-hidden="true" style="font-size:20px;line-height:1;color:#00a759"></i>Services provided</div>
+            <div style="display:flex;align-items:center;gap:10px"><i class="ph-fill ph-check-circle" aria-hidden="true" style="font-size:20px;line-height:1;color:#00a759"></i>Company details</div>
+            <div style="display:flex;align-items:center;gap:10px;color:#646776"><i class="ph ph-circle" aria-hidden="true" style="font-size:20px;line-height:1;color:#b9bcc9"></i>Integrations</div>
+            <div style="display:flex;align-items:center;gap:10px;color:#646776"><i class="ph ph-circle" aria-hidden="true" style="font-size:20px;line-height:1;color:#b9bcc9"></i>Quote defaults</div>
+          </div>
         </div>
       </div>
-      <sc-if value="{{ reviewsOpen }}" hint-placeholder-val="{{ false }}">
+
+    <section style="margin-top:8px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:18px 0 12px;border-bottom:1px solid #dfe1eb">
+        <div style="display:flex;align-items:baseline;gap:20px">
+          <h2 style="margin: 0; font-size: 24px; font-weight: 600; color: #1a1a1a">Get more reviews</h2>
+        </div>
+      </div>
+      <sc-if value="{{ reviewsOpen }}" hint-placeholder-val="{{ true }}">
         <div style="padding:24px 0 34px">
           <p style="margin:0 0 8px;font-size:18px;font-weight:700;color:#1a1a1a">Homeowners read your reviews before they call you.</p>
           <p style="margin:0 0 34px;max-width:660px;font-size:17px;color:#3d3d47;line-height:1.5">Email past and current customers a direct link to your company profile. It is the fastest way to add reviews.</p>
@@ -656,8 +630,86 @@
         </div>
       </sc-if>
     </section>
+
+    </section>
   </main>
     </div>
+  </sc-if>
+
+  <sc-if value="{{ onSetPassword }}" hint-placeholder-val="{{ false }}">
+    <main style="max-width:640px;margin:0 auto;padding:40px 40px 120px">
+      <button type="button" onClick="{{ goProfile }}" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:32px;padding:0;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:500;color:#646776;cursor:pointer" style-hover="color:#1a1a1a">
+        <i class="ph ph-arrow-left" aria-hidden="true" style="font-size:16px;line-height:1"></i>Back to profile
+      </button>
+      <h1 style="margin:0 0 28px;font-size:36px;font-weight:700;color:#1a1a1a;letter-spacing:-.015em">Set password</h1>
+      <sc-if value="{{ setPwForm }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <label style="display:block;margin-bottom:10px;font-size:16px;font-weight:500;color:#3d3d47">New password: <span style="color:#c02b2b">*</span></label>
+          <input type="password" style="width:100%;box-sizing:border-box;height:52px;padding:0 16px;border:1px solid #646776;border-radius:4px;background:#ffffff;font-family:inherit;font-size:17px;color:#1b1763;outline:none" style-focus="border-color:#2e46b9;box-shadow:0 0 0 3px #eaf0ff">
+          <div style="display:flex;justify-content:flex-end;margin-top:16px">
+            <button type="button" onClick="{{ savePassword }}" style="padding:14px 22px;border:0;border-radius:12px;background:#2e46b9;box-shadow:0 5px 10px 0 #c8dfff;font-family:inherit;font-size:16px;font-weight:700;color:#ffffff;cursor:pointer" style-hover="background:#26399a">Set password</button>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ setPwDone }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding:16px 20px;border-radius:8px;background:#e6f6ed">
+            <i class="ph-fill ph-check-circle" aria-hidden="true" style="font-size:22px;line-height:1;color:#00a759"></i>
+            <span style="font-size:17px;font-weight:600;color:#1a1a1a">Your password was updated.</span>
+          </div>
+          <button type="button" onClick="{{ goProfile }}" style="padding:0;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:#2e46b9;cursor:pointer" style-hover="text-decoration:underline">Back to profile</button>
+        </div>
+      </sc-if>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ onTerritories }}" hint-placeholder-val="{{ false }}">
+    <main style="max-width:1200px;margin:0 auto;padding:24px 40px 96px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:24px">
+        <h1 style="margin:0;font-size:36px;font-weight:700;color:#1a1a1a;letter-spacing:-.015em">Territories</h1>
+        
+      </div>
+
+      <div style="height:400px;margin-bottom:24px;border:1px solid #dfe1eb;border-radius:12px;overflow:hidden;background:#f1f3fb">
+        <button type="button" style="display: none; align-items: center; gap: 9px; padding: 14px 26px; border: 0; border-radius: 8px; background: #2e46b9; box-shadow: 0 5px 10px 0 #c8dfff; font-family: inherit; font-size: 16px; font-weight: 700; color: #ffffff; cursor: pointer" style-hover="background:#26399a">
+          <i class="ph ph-plus" aria-hidden="true" style="font-size: 17px; line-height: 1; display: none"></i>Add territory
+        </button><iframe title="Territory map" src="https://www.openstreetmap.org/export/embed.html?bbox=-73.6%2C41.2%2C-69.8%2C42.9&amp;layer=mapnik" style="display:block;width:100%;height:100%;border:0" loading="lazy"></iframe>
+      </div>
+
+      <div style="border:1px solid #dfe1eb;border-radius:4px;overflow:hidden">
+        <table style="width:100%;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#e4ecfd">
+              <th style="padding:16px 18px;text-align:left;font-size:15px;font-weight:600;color:#1b1763;white-space:nowrap;width:160px;border-right:1px solid #dfe1eb">Territory</th>
+              <th style="padding:16px 18px;text-align:left;font-size:15px;font-weight:600;color:#1b1763;white-space:nowrap;width:110px;text-align:center;border-right:1px solid #dfe1eb">Download</th>
+              <th style="padding:16px 18px;text-align:left;font-size:15px;font-weight:600;color:#1b1763;white-space:nowrap;border-right:1px solid #dfe1eb">Sales reps assigned</th>
+              <th style="padding:16px 18px;text-align:left;font-size:15px;font-weight:600;color:#1b1763;white-space:nowrap;width:80px;text-align:center">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ territories }}" as="ter" hint-placeholder-count="3">
+              <tr style="border-top:1px solid #dfe1eb">
+                <td style="padding:16px 18px;vertical-align:top;border-right:1px solid #dfe1eb">
+                  <div style="font-weight:600;color:#1a1a1a;margin-bottom:4px">{{ ter.name }}</div>
+                  <div style="color:#646776">{{ ter.zips }}</div>
+                </td>
+                <td style="padding:16px 18px;vertical-align:top;text-align:center;border-right:1px solid #dfe1eb">
+                  <button type="button" aria-label="Download zip codes" style="padding:4px;border:0;background:transparent;color:#2e46b9;cursor:pointer">
+                    <i class="ph ph-download-simple" aria-hidden="true" style="font-size:22px;line-height:1"></i>
+                  </button>
+                </td>
+                <td style="padding:16px 18px;vertical-align:top;color:#3d3d47;line-height:1.6;border-right:1px solid #dfe1eb">{{ ter.reps }}</td>
+                <td style="padding:16px 18px;vertical-align:top;text-align:center">
+                  <button type="button" aria-label="Edit territory" style="padding:4px;border:0;background:transparent;color:#2e46b9;cursor:pointer">
+                    <i class="ph ph-pencil-simple" aria-hidden="true" style="font-size:22px;line-height:1"></i>
+                  </button>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </main>
   </sc-if>
 </div>
 
@@ -827,15 +879,28 @@ class Component extends DCLogic {
       onPackages: page === "packages",
       onAutoquote: page === "autoquote",
       onProfile: page === "profile",
+      onTerritories: page === "territories",
+      onSetPassword: page === "setPassword",
+      goSetPassword: () => { this.setState({ pwSaved: false }); this.go("setPassword"); },
+      setPwForm: !this.state.pwSaved,
+      setPwDone: this.state.pwSaved,
+      goTerritories: () => this.go("territories"),
+      territoriesMenuStyle: page === "territories" ? MENUITEM_ON : MENUITEM,
+      territories: [
+        { name: "Greater Boston", zips: "312 zip codes", reps: "Dennis Reynolds, Frank Reynolds, Charlie Kelly, Deandra Reynolds, Ronald MacDonald, Lenny Navin, Megan Hurley" },
+        { name: "Western Massachusetts", zips: "188 zip codes", reps: "Frank Reynolds, Lenny Navin" },
+        { name: "Rhode Island", zips: "77 zip codes", reps: "Deandra Reynolds, Charlie Kelly, Megan Hurley" },
+        { name: "Southern New Hampshire", zips: "141 zip codes", reps: "Dennis Reynolds" },
+      ],
       goLeads: () => this.go("leads"),
       goPackages: () => { this.setState({ view: "list" }); this.go("packages"); },
       goAutoquote: () => this.go("autoquote"),
       goProfile: () => this.go("profile"),
       leadsNavStyle: navStyle(page === "leads"),
-      quoteNavStyle: navStyle(page === "packages" || page === "autoquote"),
+      quoteNavStyle: navStyle(page === "packages" || page === "autoquote" || page === "territories"),
       packagesMenuStyle: page === "packages" ? MENUITEM_ON : MENUITEM,
       autoquoteMenuStyle: page === "autoquote" ? MENUITEM_ON : MENUITEM,
-      profileMenuStyle: page === "profile" ? MENUITEM_ON : MENUITEM,
+      profileMenuStyle: (page === "profile" || page === "setPassword") ? MENUITEM_ON : MENUITEM,
 
       quoteOpen: this.state.quoteOpen,
       accountOpen: this.state.accountOpen,
@@ -932,7 +997,7 @@ class Component extends DCLogic {
 
       reviewsLabel: this.pfLabel("reviews"),
       toggleReviews: () => this.pfFlip("reviews"),
-      reviewsOpen: open.reviews,
+      reviewsOpen: true,
       copyLabel: this.state.copied ? "Copied" : "Copy link",
       copyLink: () => {
         if (navigator.clipboard) navigator.clipboard.writeText("https://energysage.com/r/summit-peak-solar");
